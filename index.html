@@ -91,7 +91,7 @@
 
   /* PACKAGES */
   .packages { background: var(--black); }
-  .pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; margin-top: 3rem; background: rgba(255,255,255,0.04); }
+  .pkg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5px; margin-top: 3rem; background: rgba(255,255,255,0.04); }
   .pkg-card { background: var(--off-black); padding: 2.5rem; position: relative; transition: background 0.3s; display: flex; flex-direction: column; }
   .pkg-card:hover { background: #1e1e1e; }
   .pkg-card.featured { background: var(--dark); border-top: 2px solid var(--gold); }
@@ -393,13 +393,12 @@
       </div>
     </div>
 
-    <div class="pkg-card featured">
-      <span class="pkg-badge">Most Popular</span>
+    <div class="pkg-card">
       <p class="pkg-name">The Campaign</p>
-      <p class="pkg-tagline">Three commercials. A full ad campaign.</p>
-      <div class="pkg-price">$3,500</div>
+      <p class="pkg-tagline">Three commercials. Delivered and ready to run.</p>
+      <div class="pkg-price">$2,500</div>
       <p class="pkg-price-note">Traditional production cost: $15,000&ndash;$30,000</p>
-      <p class="pkg-savings">Save $1,900 vs. buying three singles separately</p>
+      <p class="pkg-savings">Save $900 vs. buying three singles separately</p>
       <ul class="pkg-features">
         <li>3 cinematic commercials (15&ndash;30 seconds each)</li>
         <li>Built to run as a complete paid ad campaign</li>
@@ -413,29 +412,52 @@
       <div class="pkg-action-pair">
         <!-- Purchase URL: replace '#' with your payment/checkout link -->
         <a href="#" class="pkg-btn-buy">Purchase Now</a>
-        <button class="pkg-btn-call" onclick="openBookingModal('The Campaign — $3,500')">Book a Call</button>
+        <button class="pkg-btn-call" onclick="openBookingModal('The Campaign — $2,500')">Book a Call</button>
       </div>
     </div>
 
-    <div class="pkg-card">
-      <p class="pkg-name">The Retainer</p>
-      <p class="pkg-tagline">3 commercials/mo + ad management.</p>
-      <div class="pkg-price">$3,000<span style="font-size:1rem;color:var(--muted)">/mo</span></div>
-      <p class="pkg-price-note">Annual commitment required</p>
-      <p class="pkg-savings">Worth $5,400/mo buying separately &mdash; you save $2,400/mo &mdash; $28,800/yr</p>
+    <div class="pkg-card featured">
+      <span class="pkg-badge">Most Popular</span>
+      <p class="pkg-name">The Growth Retainer</p>
+      <p class="pkg-tagline">3 commercials/mo + data tracking + optimization.</p>
+      <div class="pkg-price">$3,500<span style="font-size:1rem;color:var(--muted)">/mo</span></div>
+      <p class="pkg-price-note">Month-to-month</p>
+      <p class="pkg-savings">Data-backed creative that improves every month</p>
       <ul class="pkg-features">
         <li>3 cinematic commercials per month</li>
-        <li>Full paid ad campaign management included</li>
-        <li>Monthly performance reporting</li>
+        <li>Performance data tracking</li>
+        <li>Monthly optimization report</li>
         <li>Priority 48-hour turnaround</li>
         <li>Monthly strategy call</li>
         <li>Fresh creative tied to your promotions &amp; seasons</li>
       </ul>
-      <p class="pkg-expires">Annual commitment &mdash; 4 retainer spots total</p>
+      <p class="pkg-expires">4 retainer spots available</p>
       <div class="pkg-action-pair">
         <!-- Purchase URL: replace '#' with your payment/checkout link -->
         <a href="#" class="pkg-btn-buy">Purchase Now</a>
-        <button class="pkg-btn-call" onclick="openBookingModal('The Retainer — $3,000/mo')">Book a Call</button>
+        <button class="pkg-btn-call" onclick="openBookingModal('The Growth Retainer — $3,500/mo')">Book a Call</button>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <p class="pkg-name">The Scale Retainer</p>
+      <p class="pkg-tagline">5 commercials/mo + full ad management + weekly reporting.</p>
+      <div class="pkg-price">$6,000<span style="font-size:1rem;color:var(--muted)">/mo</span></div>
+      <p class="pkg-price-note">Month-to-month</p>
+      <p class="pkg-savings">Full-service execution &mdash; we manage everything</p>
+      <ul class="pkg-features">
+        <li>5 cinematic commercials per month</li>
+        <li>Full paid ad campaign management</li>
+        <li>Weekly performance reporting</li>
+        <li>Dedicated account manager</li>
+        <li>Priority same-day turnaround</li>
+        <li>Ongoing strategy &amp; creative direction</li>
+      </ul>
+      <p class="pkg-expires">2 retainer spots available</p>
+      <div class="pkg-action-pair">
+        <!-- Purchase URL: replace '#' with your payment/checkout link -->
+        <a href="#" class="pkg-btn-buy">Purchase Now</a>
+        <button class="pkg-btn-call" onclick="openBookingModal('The Scale Retainer — $6,000/mo')">Book a Call</button>
       </div>
     </div>
 
@@ -504,16 +526,16 @@
   <div class="founder-grid founder-grid-reverse">
     <div>
       <div style="display:inline-block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.8rem;background:rgba(201,168,76,0.15);color:#C9A84C;border:0.5px solid rgba(201,168,76,0.4);margin-bottom:1.2rem;font-weight:500;">President</div>
-      <h3 class="founder-name">Grady Evens</h3>
+      <h3 class="founder-name">Grady Evans</h3>
       <p class="founder-title">President & Head of Production &mdash; Vizzion Studios</p>
       <div class="founder-body">
-        <p>Every great studio has someone who makes sure the vision actually gets executed. Grady Evens is that person at Vizzion.</p>
+        <p>Every great studio has someone who makes sure the vision actually gets executed. Grady Evans is that person at Vizzion.</p>
         <p>As President and Head of Production, Grady oversees the end-to-end delivery of every commercial — from location scouting and reference photography to post-production and final delivery. His eye for detail and obsession with quality control is what ensures every Vizzion commercial hits the standard clients are paying for.</p>
         <p>Together with Zach, Grady co-founded Vizzion Studios on the belief that local businesses deserve Hollywood-quality creative — and that the technology now exists to deliver it.</p>
       </div>
     </div>
     <div class="founder-img-wrap">
-      <img src="images/grady.jpg" alt="Grady Evens — President, Vizzion Studios" class="founder-img" />
+      <img src="images/grady.jpg" alt="Grady Evans — President, Vizzion Studios" class="founder-img" />
       <div class="founder-img-border" style="bottom:-16px;left:-16px;right:auto;"></div>
     </div>
   </div>
