@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vizzion Studios — Cinematic Commercials, Los Angeles</title>
-<meta name="description" content="Vizzion Studios produces TV-quality commercials for local businesses in Los Angeles. Cinematic paid ads for Meta, TikTok, and YouTube — delivered in 5 days, starting at $1,800.">
+<meta name="description" content="Vizzion Studios produces TV-quality commercials for local businesses in Los Angeles. Cinematic paid ads for Meta, TikTok, and YouTube — delivered in 5 days.">
 <meta property="og:title" content="Vizzion Studios — Cinematic Commercials, Los Angeles">
-<meta property="og:description" content="TV-quality commercials for local businesses. Built to run as high-converting paid ads. Delivered in 5 days. Starting at $1,800.">
+<meta property="og:description" content="TV-quality commercials for local businesses. Built to run as high-converting paid ads on Meta, TikTok, and YouTube. Delivered in 5 days.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vizzion.studio">
 <meta property="og:image" content="https://vizzion.studio/images/zach.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vizzion Studios — Cinematic Commercials, Los Angeles">
-<meta name="twitter:description" content="TV-quality commercials for local businesses. Built to run as high-converting paid ads. Delivered in 5 days. Starting at $1,800.">
+<meta name="twitter:description" content="TV-quality commercials for local businesses. Built to run as high-converting paid ads on Meta, TikTok, and YouTube. Delivered in 5 days.">
 <meta name="twitter:image" content="https://vizzion.studio/images/zach.jpg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23080808'/><text x='4' y='24' font-size='22' font-family='Georgia,serif' fill='%23C9A84C'>V</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,6 +125,32 @@
   .step-num { font-family: var(--serif); font-size: 4rem; font-weight: 300; color: rgba(201,168,76,0.2); line-height: 1; margin-bottom: 0.8rem; }
   .step-title { font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; color: var(--off-white); }
   .step-body { font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
+
+  /* PORTFOLIO */
+  .portfolio { background: var(--off-black); }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5px; margin-top: 3rem; background: rgba(255,255,255,0.04); }
+  .portfolio-item { position: relative; aspect-ratio: 16/9; overflow: hidden; cursor: pointer; }
+  .portfolio-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, filter 0.5s ease; filter: grayscale(20%) brightness(0.85); }
+  .portfolio-item:hover .portfolio-thumb { transform: scale(1.04); filter: grayscale(0%) brightness(0.7); }
+  .portfolio-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .portfolio-play { width: 64px; height: 64px; border: 1.5px solid rgba(201,168,76,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; background: rgba(8,8,8,0.45); backdrop-filter: blur(4px); }
+  .portfolio-play svg { width: 22px; height: 22px; fill: var(--gold); margin-left: 3px; }
+  .portfolio-item:hover .portfolio-play { background: var(--gold); border-color: var(--gold); transform: scale(1.08); }
+  .portfolio-item:hover .portfolio-play svg { fill: var(--black); }
+
+  /* LIGHTBOX */
+  .lb-backdrop { position: fixed; inset: 0; background: rgba(4,4,4,0.95); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .lb-backdrop.open { opacity: 1; pointer-events: all; }
+  .lb-inner { position: relative; width: min(900px, 94vw); }
+  .lb-ratio { position: relative; padding-bottom: 56.25%; height: 0; }
+  .lb-ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .lb-close { position: absolute; top: -2.6rem; right: 0; background: none; border: none; color: var(--muted); font-size: 1.5rem; cursor: pointer; letter-spacing: 0.08em; font-family: var(--sans); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.18em; transition: color 0.2s; }
+  .lb-close:hover { color: var(--gold); }
+
+  @media (max-width: 960px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-play { width: 52px; height: 52px; }
+  }
 
   /* TESTIMONIALS */
   .testimonials { background: var(--black); }
@@ -249,6 +275,7 @@
   <a href="#" class="nav-logo">Vizzi<span>on</span> Studios</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#packages">Packages</a></li>
     <li><a href="#founder">Team</a></li>
     <li><a href="#process">Process</a></li>
@@ -263,6 +290,7 @@
 <!-- MOBILE NAV OVERLAY -->
 <div class="nav-mobile" role="dialog" aria-label="Navigation">
   <a href="#about">About</a>
+  <a href="#work">Work</a>
   <a href="#packages">Packages</a>
   <a href="#founder">Team</a>
   <a href="#process">Process</a>
@@ -274,7 +302,7 @@
 <section class="hero" id="home">
   <p class="hero-eyebrow">Los Angeles &bull; Burbank &bull; Commercial Production Studio</p>
   <h1 class="hero-title">Cinematic commercials.<br><em>Built to convert.</em></h1>
-  <p class="hero-sub">We produce TV-quality commercials for local businesses — the kind that run directly as high-converting paid ads on Meta, TikTok, and YouTube. Delivered in 5 days. Starting at $1,800.</p>
+  <p class="hero-sub">We produce TV-quality commercials for local businesses — the kind that run directly as high-converting paid ads on Meta, TikTok, and YouTube. Delivered in 5 days.</p>
   <div class="hero-actions">
     <a href="#packages" class="btn-primary">View Packages</a>
     <a href="#process" class="btn-ghost">How it works &rarr;</a>
@@ -289,12 +317,12 @@
       <div class="label">Day delivery</div>
     </div>
     <div class="hero-stat">
-      <div class="num">$1.8K</div>
-      <div class="label">Entry price</div>
+      <div class="num">3</div>
+      <div class="label">Platforms built for</div>
     </div>
     <div class="hero-stat">
-      <div class="num">80%</div>
-      <div class="label">Below agency rates</div>
+      <div class="num">4K</div>
+      <div class="label">Cinematic quality</div>
     </div>
     <div class="hero-stat">
       <div class="num">LA</div>
@@ -328,17 +356,18 @@
 <!-- PROOF BAR -->
 <div class="proof-bar">
   <div class="proof-item">
-    <div class="proof-num">$10K+</div>
-    <div class="proof-label">Traditional production cost</div>
-  </div>
-  <div class="proof-divider"></div>
-  <div class="proof-item">
-    <div class="proof-label" style="font-size:0.85rem;max-width:180px;text-align:center;">The most competitive pricing in the industry</div>
-  </div>
-  <div class="proof-divider"></div>
-  <div class="proof-item">
     <div class="proof-num">5 Days</div>
     <div class="proof-label">From brief to delivery</div>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <div class="proof-num">3</div>
+    <div class="proof-label">Platforms optimized for</div>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <div class="proof-num">4K</div>
+    <div class="proof-label">Cinematic production quality</div>
   </div>
   <div class="proof-divider"></div>
   <div class="proof-item">
@@ -456,16 +485,16 @@
 
   <div class="founder-grid" style="margin-top:3rem;">
     <div class="founder-img-wrap">
-      <img src="images/zach.jpg" alt="Zach Michael — CEO, Vizzion Studios" class="founder-img" />
+      <img src="images/zach.jpg" alt="Zach Zuberbuehler — CEO, Vizzion Studios" class="founder-img" />
       <div class="founder-img-border"></div>
     </div>
     <div>
       <div style="display:inline-block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.8rem;background:#C9A84C;color:#080808;margin-bottom:1.2rem;font-weight:500;">Chief Executive Officer</div>
-      <h3 class="founder-name">Zach Michael</h3>
+      <h3 class="founder-name">Zach Zuberbuehler</h3>
       <p class="founder-title">CEO & Creative Director &mdash; Vizzion Studios</p>
       <div class="founder-body">
         <p>Most commercial production companies are built by people who understand cameras. Vizzion Studios was built by someone who understands storytelling.</p>
-        <p>Zach Michael is a Los Angeles-based recording artist, songwriter, and creative director whose entire career has been built on one principle: visual identity is everything. Before the first note plays, before the first word lands — the audience has already decided how they feel about you. That instinct is what he brings to every commercial Vizzion produces.</p>
+        <p>Zach Zuberbuehler is a Los Angeles-based recording artist, songwriter, and creative director whose entire career has been built on one principle: visual identity is everything. Before the first note plays, before the first word lands — the audience has already decided how they feel about you. That instinct is what he brings to every commercial Vizzion produces.</p>
         <p>Working with the same AI-powered production pipeline used by the world's top studios, Zach leads creative direction and client strategy — engineering commercials that are built from the first two seconds to stop the scroll and drive action.</p>
       </div>
     </div>
@@ -541,6 +570,61 @@
   </div>
 </section>
 
+<!-- PORTFOLIO -->
+<section class="portfolio" id="work">
+  <p class="section-label">Our Work</p>
+  <h2 class="section-title">Commercials that stop<br><em>the scroll.</em></h2>
+  <div class="portfolio-grid">
+
+    <div class="portfolio-item" data-vid="nxJogSMXuj0">
+      <img class="portfolio-thumb" src="https://img.youtube.com/vi/nxJogSMXuj0/maxresdefault.jpg" alt="Vizzion Studios commercial" loading="lazy" />
+      <div class="portfolio-overlay">
+        <div class="portfolio-play">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-item" data-vid="5cous-R2f_Y">
+      <img class="portfolio-thumb" src="https://img.youtube.com/vi/5cous-R2f_Y/maxresdefault.jpg" alt="Vizzion Studios commercial" loading="lazy" />
+      <div class="portfolio-overlay">
+        <div class="portfolio-play">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-item" data-vid="0taT6bibuQA">
+      <img class="portfolio-thumb" src="https://img.youtube.com/vi/0taT6bibuQA/maxresdefault.jpg" alt="Vizzion Studios commercial" loading="lazy" />
+      <div class="portfolio-overlay">
+        <div class="portfolio-play">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-item" data-vid="G2DdXCd8bSo">
+      <img class="portfolio-thumb" src="https://img.youtube.com/vi/G2DdXCd8bSo/maxresdefault.jpg" alt="Vizzion Studios commercial" loading="lazy" />
+      <div class="portfolio-overlay">
+        <div class="portfolio-play">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lb-backdrop" id="lightbox" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="lb-inner">
+    <button class="lb-close" id="lb-close" aria-label="Close video">&#x2715; Close</button>
+    <div class="lb-ratio">
+      <iframe id="lb-frame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
 <!-- TESTIMONIALS -->
 <section class="testimonials">
   <p class="section-label">Client Results</p>
@@ -548,7 +632,7 @@
   <div class="testi-grid">
     <div class="testi-card">
       <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="testi-quote">"We had never run a paid ad before. Within two weeks of launching the commercial, we had five new clients reference it when they booked. The ROAS was immediately obvious."</p>
+      <p class="testi-quote">"We had never run a paid ad before. Within two weeks of launching the commercial, we had five new clients reference it when they booked. The ROI was immediately obvious."</p>
       <p class="testi-result">Result: 5 new clients in 2 weeks from a single commercial</p>
       <p class="testi-author">Owner &mdash; Med Spa, Studio City</p>
     </div>
@@ -659,9 +743,7 @@
     link.addEventListener('click', () => toggleMenu(false));
   });
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { toggleMenu(false); closeBookingModal(); }
-  });
+  // Escape key handled in lightbox script block below
 </script>
 
 <script>
@@ -731,6 +813,36 @@
 </script>
 
 <script>
+  // ── Lightbox ──
+  const lb = document.getElementById('lightbox');
+  const lbFrame = document.getElementById('lb-frame');
+  const lbClose = document.getElementById('lb-close');
+
+  function openLightbox(vid) {
+    lbFrame.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1&rel=0&modestbranding=1';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    lbFrame.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    item.addEventListener('click', () => openLightbox(item.dataset.vid));
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { toggleMenu(false); closeLightbox(); closeBookingModal(); }
+  });
+</script>
+
+<script>
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -741,7 +853,7 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll(
-    '.section-label, .section-title, .proof-item, .about-pull, .pkg-card, .testi-card, .steps > div, .target-item, .founder-grid, .about-body'
+    '.section-label, .section-title, .proof-item, .about-pull, .pkg-card, .testi-card, .steps > div, .target-item, .founder-grid, .about-body, .portfolio-item'
   ).forEach(el => {
     el.classList.add('reveal');
     revealObserver.observe(el);
