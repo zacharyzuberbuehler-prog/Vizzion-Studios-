@@ -39,14 +39,26 @@
   .nav-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; letter-spacing: 0.06em; color: var(--off-white); text-decoration: none; }
   .nav-logo span { color: var(--gold); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+  .nav-links a { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,242,236,0.6); text-decoration: none; transition: color 0.3s; font-weight: 500; }
   .nav-links a:hover { color: var(--gold); }
   .nav-cta { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.65rem 1.6rem; border: 0.5px solid var(--gold); color: var(--gold); text-decoration: none; transition: all 0.3s; }
   .nav-cta:hover { background: var(--gold); color: var(--black); }
 
   /* HERO */
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 5rem; position: relative; overflow: hidden; }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 8rem 4rem 5rem; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%); pointer-events: none; }
+  .hero-content { display: flex; flex-direction: column; }
+  .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; opacity: 0; animation: fadeUp 0.8s 1s forwards; }
+  .hero-video-thumb { position: relative; width: 100%; cursor: pointer; overflow: hidden; }
+  .hero-video-thumb img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; filter: brightness(0.75) grayscale(15%); transition: filter 0.45s ease; }
+  .hero-video-thumb:hover img { filter: brightness(0.6) grayscale(0%); }
+  .hero-play-circle { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; }
+  .hero-play-icon { width: 76px; height: 76px; border: 1.5px solid rgba(201,168,76,0.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(8,8,8,0.45); backdrop-filter: blur(6px); transition: all 0.3s; }
+  .hero-play-icon svg { width: 26px; height: 26px; fill: var(--gold); margin-left: 4px; }
+  .hero-video-thumb:hover .hero-play-icon { background: var(--gold); border-color: var(--gold); transform: scale(1.08); }
+  .hero-video-thumb:hover .hero-play-icon svg { fill: var(--black); }
+  .hero-play-label { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,242,236,0.65); }
+  .hero-video-accent { position: absolute; bottom: -14px; right: -14px; width: 100%; height: 100%; border: 0.5px solid rgba(201,168,76,0.3); z-index: -1; pointer-events: none; }
   .hero-eyebrow { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
   .hero-title { font-family: var(--serif); font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: 1.05; max-width: 820px; opacity: 0; animation: fadeUp 0.8s 0.35s forwards; }
   .hero-title em { font-style: italic; color: var(--gold); }
@@ -64,10 +76,10 @@
   .hero-stat .label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
 
   /* MARQUEE */
-  .marquee-wrap { overflow: hidden; border-top: 0.5px solid rgba(201,168,76,0.15); border-bottom: 0.5px solid rgba(201,168,76,0.15); padding: 1rem 0; background: var(--off-black); }
-  .marquee-inner { display: flex; gap: 3rem; animation: marquee 22s linear infinite; white-space: nowrap; }
+  .marquee-wrap { overflow: hidden; border-top: 0.5px solid rgba(201,168,76,0.15); border-bottom: 0.5px solid rgba(201,168,76,0.15); padding: 1rem 0; background: var(--off-black); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); }
+  .marquee-inner { display: flex; gap: 3rem; animation: marquee 32s linear infinite; white-space: nowrap; }
   .marquee-item { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
-  .marquee-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  .marquee-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.25); border-radius: 50%; flex-shrink: 0; }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* SECTIONS */
@@ -102,7 +114,7 @@
   .pkg-price-note { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 0.5rem; }
   .pkg-savings { font-size: 0.72rem; color: var(--gold); font-weight: 500; letter-spacing: 0.04em; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
   .pkg-features { list-style: none; flex: 1; }
-  .pkg-features li { font-size: 0.8rem; color: rgba(245,242,236,0.7); padding: 0.5rem 0; border-bottom: 0.5px solid rgba(255,255,255,0.05); display: flex; align-items: flex-start; gap: 0.8rem; letter-spacing: 0.02em; line-height: 1.5; }
+  .pkg-features li { font-size: 0.8rem; color: rgba(245,242,236,0.85); padding: 0.5rem 0; border-bottom: 0.5px solid rgba(255,255,255,0.07); display: flex; align-items: flex-start; gap: 0.8rem; letter-spacing: 0.02em; line-height: 1.5; }
   .pkg-features li::before { content: ''; width: 5px; height: 1px; background: var(--gold); flex-shrink: 0; margin-top: 0.65rem; }
   .pkg-expires { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; margin-top: 1rem; text-align: center; }
   .pkg-cta { display: block; margin-top: 1.5rem; text-align: center; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.85rem; border: 0.5px solid rgba(201,168,76,0.4); color: var(--gold); text-decoration: none; transition: all 0.3s; }
@@ -156,7 +168,7 @@
   .testimonials { background: var(--black); }
   .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
   .testi-card { padding: 2rem; border: 0.5px solid rgba(255,255,255,0.08); }
-  .testi-stars { color: var(--gold); font-size: 0.75rem; letter-spacing: 0.15em; margin-bottom: 1rem; }
+  .testi-stars { color: rgba(245,242,236,0.55); font-size: 0.75rem; letter-spacing: 0.15em; margin-bottom: 1rem; }
   .testi-quote { font-family: var(--serif); font-size: 1.05rem; font-weight: 300; font-style: italic; line-height: 1.7; color: rgba(245,242,236,0.85); margin-bottom: 1.2rem; }
   .testi-result { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--gold); font-weight: 500; margin-bottom: 0.8rem; }
   .testi-author { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
@@ -164,9 +176,10 @@
   /* TARGETS */
   .targets { background: var(--off-black); }
   .target-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin-top: 3rem; border: 0.5px solid rgba(255,255,255,0.08); }
-  .target-item { padding: 1.5rem 2rem; border-bottom: 0.5px solid rgba(255,255,255,0.06); border-right: 0.5px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 1.2rem; }
-  .target-icon { width: 34px; height: 34px; border: 0.5px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--gold); flex-shrink: 0; }
-  .target-name { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); }
+  .target-item { padding: 1.5rem 2rem; border-bottom: 0.5px solid rgba(255,255,255,0.06); border-right: 0.5px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 1.2rem; border-left: 2px solid transparent; transition: border-color 0.3s, background 0.3s; }
+  .target-item:hover { border-left-color: var(--gold); background: rgba(201,168,76,0.04); }
+  .target-icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: rgba(201,168,76,0.5); flex-shrink: 0; }
+  .target-name { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,242,236,0.85); }
 
   /* CTA */
   .cta-section { background: var(--black); text-align: center; padding: 8rem 4rem; position: relative; overflow: hidden; }
@@ -257,7 +270,8 @@
     .nav-cta { display: none; }
     .nav-hamburger { display: flex; }
     section { padding: 5rem 1.5rem; }
-    .hero { padding: 6rem 1.5rem 4rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 4rem; gap: 3rem; }
+    .hero-visual { display: none; }
     .about-grid, .pkg-grid, .steps, .testi-grid, .target-list, .founder-grid { grid-template-columns: 1fr; }
     .hero-stat-row { flex-wrap: wrap; gap: 2rem; }
     .proof-bar { flex-wrap: wrap; gap: 2rem; padding: 2rem 1.5rem; }
@@ -300,33 +314,47 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <p class="hero-eyebrow">Los Angeles &bull; Burbank &bull; Commercial Production Studio</p>
-  <h1 class="hero-title">Cinematic commercials.<br><em>Built to convert.</em></h1>
-  <p class="hero-sub">We produce TV-quality commercials for local businesses — the kind that run directly as high-converting paid ads on Meta, TikTok, and YouTube. Delivered in 5 days.</p>
-  <div class="hero-actions">
-    <a href="#packages" class="btn-primary">View Packages</a>
-    <a href="#process" class="btn-ghost">How it works &rarr;</a>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Los Angeles &bull; Burbank &bull; Commercial Production Studio</p>
+    <h1 class="hero-title">Cinematic commercials.<br><em>Built to convert.</em></h1>
+    <p class="hero-sub">We produce TV-quality commercials for local businesses — the kind that run directly as high-converting paid ads on Meta, TikTok, and YouTube. Delivered in 5 days.</p>
+    <div class="hero-actions">
+      <a href="#packages" class="btn-primary">View Packages</a>
+      <a href="#process" class="btn-ghost">How it works &rarr;</a>
+    </div>
+    <div class="urgency-tag">
+      <span class="urgency-dot"></span>
+      Accepting 4 new clients this month &mdash; 2 spots remaining
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="num">5</div>
+        <div class="label">Day delivery</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">3</div>
+        <div class="label">Platforms built for</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">4K</div>
+        <div class="label">Cinematic quality</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">LA</div>
+        <div class="label">Based studio</div>
+      </div>
+    </div>
   </div>
-  <div class="urgency-tag">
-    <span class="urgency-dot"></span>
-    Accepting 4 new clients this month &mdash; 2 spots remaining
-  </div>
-  <div class="hero-stat-row">
-    <div class="hero-stat">
-      <div class="num">5</div>
-      <div class="label">Day delivery</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">3</div>
-      <div class="label">Platforms built for</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">4K</div>
-      <div class="label">Cinematic quality</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">LA</div>
-      <div class="label">Based studio</div>
+  <div class="hero-visual">
+    <div class="hero-video-thumb" onclick="openLightbox('nxJogSMXuj0')">
+      <img src="https://img.youtube.com/vi/nxJogSMXuj0/maxresdefault.jpg" alt="Vizzion Studios — Watch Our Reel" />
+      <div class="hero-play-circle">
+        <div class="hero-play-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <span class="hero-play-label">Watch Our Reel</span>
+      </div>
+      <div class="hero-video-accent"></div>
     </div>
   </div>
 </section>
@@ -478,6 +506,34 @@
 
 </section>
 
+<!-- PROCESS -->
+<section class="process" id="process">
+  <p class="section-label">How It Works</p>
+  <h2 class="section-title">Brief to broadcast<br>in 5 days.</h2>
+  <div class="steps">
+    <div>
+      <div class="step-num">01</div>
+      <p class="step-title">Strategy Call</p>
+      <p class="step-body">15 minutes. We identify your offer, your target customer, and the conversion goal your commercial needs to hit.</p>
+    </div>
+    <div>
+      <div class="step-num">02</div>
+      <p class="step-title">Creative Brief</p>
+      <p class="step-body">We build the hook, the visual direction, and the call to action. You approve before production starts.</p>
+    </div>
+    <div>
+      <div class="step-num">03</div>
+      <p class="step-title">Production</p>
+      <p class="step-body">We produce your commercial using cinematic AI production tools and license original music to match your brand.</p>
+    </div>
+    <div>
+      <div class="step-num">04</div>
+      <p class="step-title">Launch</p>
+      <p class="step-body">Your finished commercial, formatted for paid ads, delivered in 5&ndash;7 days. Run it immediately and watch it work.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FOUNDERS -->
 <section class="founder" id="founder">
   <p class="section-label">The Team</p>
@@ -540,34 +596,6 @@
     </div>
   </div>
 
-</section>
-
-<!-- PROCESS -->
-<section class="process" id="process">
-  <p class="section-label">How It Works</p>
-  <h2 class="section-title">Brief to broadcast<br>in 5 days.</h2>
-  <div class="steps">
-    <div>
-      <div class="step-num">01</div>
-      <p class="step-title">Strategy Call</p>
-      <p class="step-body">15 minutes. We identify your offer, your target customer, and the conversion goal your commercial needs to hit.</p>
-    </div>
-    <div>
-      <div class="step-num">02</div>
-      <p class="step-title">Creative Brief</p>
-      <p class="step-body">We build the hook, the visual direction, and the call to action. You approve before production starts.</p>
-    </div>
-    <div>
-      <div class="step-num">03</div>
-      <p class="step-title">Production</p>
-      <p class="step-body">We produce your commercial using cinematic AI production tools and license original music to match your brand.</p>
-    </div>
-    <div>
-      <div class="step-num">04</div>
-      <p class="step-title">Launch</p>
-      <p class="step-body">Your finished commercial, formatted for paid ads, delivered in 5&ndash;7 days. Run it immediately and watch it work.</p>
-    </div>
-  </div>
 </section>
 
 <!-- PORTFOLIO -->
