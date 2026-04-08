@@ -264,6 +264,33 @@
   .nav-mobile .nav-mobile-cta { font-size: 0.8rem; letter-spacing: 0.18em; padding: 0.9rem 2.4rem; border: 0.5px solid var(--gold); color: var(--gold); margin-top: 1rem; }
   .nav-mobile .nav-mobile-cta:hover { background: var(--gold); color: var(--black); }
 
+  /* MODAL PACKAGE TAG */
+  .modal-package-tag { display: none; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 0.5px solid rgba(201,168,76,0.4); padding: 0.35rem 0.9rem; margin-bottom: 1.5rem; }
+  .modal-package-tag.visible { display: inline-block; }
+
+  /* FORM ERROR MESSAGE */
+  .modal-error { display: none; font-size: 0.78rem; color: #ff6b6b; text-align: center; margin-top: 1rem; line-height: 1.6; }
+  .modal-error.show { display: block; }
+
+  /* FORM SELECT */
+  .modal-field select { width: 100%; background: var(--dark); border: 0.5px solid rgba(255,255,255,0.1); color: var(--off-white); font-family: var(--sans); font-size: 0.9rem; font-weight: 300; padding: 0.75rem 1rem; outline: none; transition: border-color 0.3s; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8a8a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+  .modal-field select:focus { border-color: rgba(201,168,76,0.5); }
+  .modal-field select option { background: var(--dark); color: var(--off-white); }
+
+  /* FIELD ERROR TEXT */
+  .field-error { display: none; font-size: 0.65rem; color: #ff6b6b; margin-top: 0.3rem; letter-spacing: 0.04em; }
+  .field-error.show { display: block; }
+
+  /* SKIP LINK */
+  .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--gold); color: var(--black); padding: 0.6rem 1.2rem; font-size: 0.75rem; font-weight: 500; z-index: 200; text-decoration: none; letter-spacing: 0.08em; transition: top 0.2s; }
+  .skip-link:focus { top: 0.5rem; }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    html { scroll-behavior: auto; }
+  }
+
   @media (max-width: 960px) {
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
@@ -271,7 +298,7 @@
     .nav-hamburger { display: flex; }
     section { padding: 5rem 1.5rem; }
     .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 4rem; gap: 3rem; }
-    .hero-visual { display: none; }
+    .hero-visual { order: 2; }
     .about-grid, .pkg-grid, .steps, .testi-grid, .target-list, .founder-grid { grid-template-columns: 1fr; }
     .hero-stat-row { flex-wrap: wrap; gap: 2rem; }
     .proof-bar { flex-wrap: wrap; gap: 2rem; padding: 2rem 1.5rem; }
@@ -279,14 +306,49 @@
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     .founder-grid { gap: 3rem; }
     .founder-img { max-height: 420px; }
+    .modal-close { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+    .lb-close { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .founder-img { max-height: 280px; }
   }
 </style>
+<link rel="canonical" href="https://vizzion.studio">
+<link rel="preconnect" href="https://formspree.io">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Vizzion Studios",
+  "description": "Vizzion Studios produces TV-quality commercials for local businesses in Los Angeles. Cinematic paid ads for Meta, TikTok, and YouTube.",
+  "url": "https://vizzion.studio",
+  "image": "https://vizzion.studio/images/zach.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Los Angeles",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Los Angeles"
+  },
+  "priceRange": "$$",
+  "knowsAbout": ["Commercial Production", "Video Advertising", "Paid Ads", "Meta Ads", "TikTok Ads", "YouTube Ads"],
+  "sameAs": [
+    "https://instagram.com/vizzionla",
+    "https://tiktok.com/@vizzionla"
+  ]
+}
+</script>
 </head>
 <body>
+<a href="#about" class="skip-link">Skip to main content</a>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Vizzi<span>on</span> Studios</a>
+  <a href="#home" class="nav-logo">Vizzi<span>on</span> Studios</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
@@ -302,7 +364,7 @@
 </nav>
 
 <!-- MOBILE NAV OVERLAY -->
-<div class="nav-mobile" role="dialog" aria-label="Navigation">
+<div class="nav-mobile" role="navigation" aria-label="Mobile navigation">
   <a href="#about">About</a>
   <a href="#work">Work</a>
   <a href="#packages">Packages</a>
@@ -324,7 +386,7 @@
     </div>
     <div class="urgency-tag">
       <span class="urgency-dot"></span>
-      Accepting 4 new clients this month &mdash; 2 spots remaining
+      Limited availability &mdash; we take on a handful of clients each month
     </div>
     <div class="hero-stat-row">
       <div class="hero-stat">
@@ -346,8 +408,8 @@
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-video-thumb" onclick="openLightbox('nxJogSMXuj0')">
-      <img src="https://img.youtube.com/vi/nxJogSMXuj0/maxresdefault.jpg" alt="Vizzion Studios — Watch Our Reel" />
+    <div class="hero-video-thumb" onclick="openLightbox('5cous-R2f_Y')">
+      <img src="https://img.youtube.com/vi/5cous-R2f_Y/maxresdefault.jpg" alt="Vizzion Studios — Watch Our Reel" />
       <div class="hero-play-circle">
         <div class="hero-play-icon">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
@@ -399,8 +461,8 @@
   </div>
   <div class="proof-divider"></div>
   <div class="proof-item">
-    <div class="proof-num">4/mo</div>
-    <div class="proof-label">New clients accepted</div>
+    <div class="proof-num">100%</div>
+    <div class="proof-label">Client satisfaction</div>
   </div>
 </div>
 
@@ -412,7 +474,7 @@
     <div class="about-body">
       <p>Vizzion Studios is a Los Angeles-based commercial production company. We don't make social media posts — we make paid ad-ready commercials that drive measurable results for local businesses.</p>
       <p>Every commercial we produce is built from the ground up to run as a high-converting paid ad on Meta, TikTok, and YouTube. That means strategic hooks, cinematic production value, and creative that stops the scroll in the first two seconds — because that's when your ad budget either works or it doesn't.</p>
-      <p>We work with med spas, restaurants, fitness studios, real estate agents, and premium service businesses across the LA area who understand that in 2026, your commercial is your storefront.</p>
+      <p>We work with med spas, restaurants, fitness studios, real estate agents, and premium service businesses across the LA area who understand that your commercial is your storefront.</p>
       <p>Delivered in 5 days. Built to perform.</p>
     </div>
     <blockquote class="about-pull">
@@ -438,7 +500,7 @@
         <li>One round of revisions</li>
         <li>Delivered in 5 business days</li>
       </ul>
-      <p class="pkg-expires">Proposal valid for 7 days</p>
+      <p class="pkg-expires">Custom pricing &mdash; scoped on your strategy call</p>
       <div class="pkg-action-pair">
         <button class="pkg-btn-call" onclick="openBookingModal('The Single')">Book a Call for Pricing</button>
       </div>
@@ -456,7 +518,7 @@
         <li>Two rounds of revisions</li>
         <li>Delivered in 7 business days</li>
       </ul>
-      <p class="pkg-expires">Proposal valid for 7 days</p>
+      <p class="pkg-expires">Custom pricing &mdash; scoped on your strategy call</p>
       <div class="pkg-action-pair">
         <button class="pkg-btn-call" onclick="openBookingModal('The Campaign')">Book a Call for Pricing</button>
       </div>
@@ -474,7 +536,7 @@
         <li>Monthly strategy call</li>
         <li>Fresh creative tied to your promotions &amp; seasons</li>
       </ul>
-      <p class="pkg-expires">4 retainer spots available</p>
+      <p class="pkg-expires">Limited retainer spots available</p>
       <div class="pkg-action-pair">
         <button class="pkg-btn-call" onclick="openBookingModal('The Growth Retainer')">Book a Call for Pricing</button>
       </div>
@@ -491,7 +553,7 @@
         <li>Priority same-day turnaround</li>
         <li>Ongoing strategy &amp; creative direction</li>
       </ul>
-      <p class="pkg-expires">2 retainer spots available</p>
+      <p class="pkg-expires">Limited retainer spots available</p>
       <div class="pkg-action-pair">
         <button class="pkg-btn-call" onclick="openBookingModal('The Scale Retainer')">Book a Call for Pricing</button>
       </div>
@@ -524,12 +586,12 @@
     <div>
       <div class="step-num">03</div>
       <p class="step-title">Production</p>
-      <p class="step-body">We produce your commercial using cinematic AI production tools and license original music to match your brand.</p>
+      <p class="step-body">We produce your commercial using cinematic production techniques and license original music to match your brand.</p>
     </div>
     <div>
       <div class="step-num">04</div>
       <p class="step-title">Launch</p>
-      <p class="step-body">Your finished commercial, formatted for paid ads, delivered in 5&ndash;7 days. Run it immediately and watch it work.</p>
+      <p class="step-body">Your finished commercial, formatted for paid ads, delivered in 5 business days. Run it immediately and watch it work.</p>
     </div>
   </div>
 </section>
@@ -605,7 +667,7 @@
   <div class="portfolio-grid">
 
     <div class="portfolio-item" data-vid="nxJogSMXuj0">
-      <img class="portfolio-thumb" src="https://img.youtube.com/vi/nxJogSMXuj0/maxresdefault.jpg" alt="Vizzion Studios commercial" loading="lazy" />
+      <img class="portfolio-thumb" src="https://img.youtube.com/vi/nxJogSMXuj0/maxresdefault.jpg" alt="Vizzion Studios — cinematic commercial for local business" width="1280" height="720" loading="lazy" />
       <div class="portfolio-overlay">
         <div class="portfolio-play">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
@@ -614,7 +676,7 @@
     </div>
 
     <div class="portfolio-item" data-vid="5cous-R2f_Y">
-      <img class="portfolio-thumb" src="https://img.youtube.com/vi/5cous-R2f_Y/maxresdefault.jpg" alt="Vizzion Studios commercial" loading="lazy" />
+      <img class="portfolio-thumb" src="https://img.youtube.com/vi/5cous-R2f_Y/maxresdefault.jpg" alt="Vizzion Studios — brand showcase reel" width="1280" height="720" loading="lazy" />
       <div class="portfolio-overlay">
         <div class="portfolio-play">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
@@ -623,7 +685,7 @@
     </div>
 
     <div class="portfolio-item" data-vid="0taT6bibuQA">
-      <img class="portfolio-thumb" src="https://img.youtube.com/vi/0taT6bibuQA/maxresdefault.jpg" alt="Vizzion Studios commercial" loading="lazy" />
+      <img class="portfolio-thumb" src="https://img.youtube.com/vi/0taT6bibuQA/maxresdefault.jpg" alt="Vizzion Studios — premium service business commercial" width="1280" height="720" loading="lazy" />
       <div class="portfolio-overlay">
         <div class="portfolio-play">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
@@ -632,7 +694,7 @@
     </div>
 
     <div class="portfolio-item" data-vid="G2DdXCd8bSo">
-      <img class="portfolio-thumb" src="https://img.youtube.com/vi/G2DdXCd8bSo/maxresdefault.jpg" alt="Vizzion Studios commercial" loading="lazy" />
+      <img class="portfolio-thumb" src="https://img.youtube.com/vi/G2DdXCd8bSo/maxresdefault.jpg" alt="Vizzion Studios — lifestyle and entertainment commercial" width="1280" height="720" loading="lazy" />
       <div class="portfolio-overlay">
         <div class="portfolio-play">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
@@ -699,7 +761,7 @@
 <section class="cta-section" id="contact">
   <h2 class="cta-title">Ready to put your business on screen?</h2>
   <p class="cta-sub">Book a free 15-minute strategy call. We'll map out exactly what your commercial campaign needs to convert.</p>
-  <div class="cta-spots"><span class="cta-spots-dot"></span> 2 client spots remaining this month</div>
+  <div class="cta-spots"><span class="cta-spots-dot"></span> Limited spots available each month</div>
   <div class="action-pair">
     <!-- Purchase URL: replace '#' with your payment/checkout link -->
     <a href="#" class="btn-primary" style="display:none">Purchase Now</a>
@@ -715,6 +777,7 @@
     <a href="https://instagram.com/vizzionla" target="_blank" rel="noopener noreferrer">Instagram</a>
     <a href="https://tiktok.com/@vizzionla" target="_blank" rel="noopener noreferrer">TikTok</a>
     <a href="#contact">Contact</a>
+    <a href="#" onclick="event.preventDefault();alert('Privacy Policy coming soon.')">Privacy</a>
   </div>
 </footer>
 
@@ -725,24 +788,45 @@
     <div id="modalForm">
       <p class="modal-eyebrow">Get Started</p>
       <h2 class="modal-title">Book a Call</h2>
+      <p class="modal-package-tag" id="modalPackageTag"></p>
       <form id="bookingForm" action="https://formspree.io/f/xpqoykea" method="POST" novalidate>
         <div class="modal-field">
           <label for="biz-name">Business Name</label>
-          <input type="text" id="biz-name" name="businessName" placeholder="Your Business" required>
+          <input type="text" id="biz-name" name="businessName" placeholder="Your Business" required aria-describedby="biz-name-error">
+          <p class="field-error" id="biz-name-error">Please enter your business name.</p>
         </div>
         <div class="modal-field">
           <label for="biz-email">Email Address</label>
-          <input type="email" id="biz-email" name="email" placeholder="you@example.com" required>
+          <input type="email" id="biz-email" name="email" placeholder="you@example.com" required aria-describedby="biz-email-error">
+          <p class="field-error" id="biz-email-error">Please enter a valid email address.</p>
         </div>
         <div class="modal-field">
           <label for="biz-phone">Phone Number</label>
-          <input type="tel" id="biz-phone" name="phone" placeholder="(213) 555-0100" required>
+          <input type="tel" id="biz-phone" name="phone" placeholder="(213) 555-0100" required aria-describedby="biz-phone-error">
+          <p class="field-error" id="biz-phone-error">Please enter a valid phone number.</p>
+        </div>
+        <div class="modal-field">
+          <label for="biz-website">Website (optional)</label>
+          <input type="url" id="biz-website" name="website" placeholder="https://yourbusiness.com">
+        </div>
+        <div class="modal-field">
+          <label for="biz-referral">How did you hear about us?</label>
+          <select id="biz-referral" name="referral">
+            <option value="" disabled selected>Select one</option>
+            <option value="Instagram">Instagram</option>
+            <option value="TikTok">TikTok</option>
+            <option value="YouTube">YouTube</option>
+            <option value="Google Search">Google Search</option>
+            <option value="Referral">Referral / Word of Mouth</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
         <input type="hidden" id="modalPackage" name="package">
-        <button type="submit" class="modal-submit" id="modalSubmitBtn">Send — We'll Be in Touch</button>
+        <button type="submit" class="modal-submit" id="modalSubmitBtn">Request a Call</button>
       </form>
+      <p class="modal-error" id="modalError" aria-live="polite">Something went wrong. Please try again or reach out to us on Instagram.</p>
     </div>
-    <div class="modal-thanks" id="modalThanks">
+    <div class="modal-thanks" id="modalThanks" aria-live="polite">
       <div class="modal-thanks-check">&#10003;</div>
       <h3 class="modal-thanks-title">You're on our radar.</h3>
       <p class="modal-thanks-sub">Thanks! We'll be in touch within 24 hours.</p>
@@ -776,24 +860,44 @@
 
 <script>
   const modal = document.getElementById('bookingModal');
+  let formHasData = false;
 
   function openBookingModal(packageName) {
     document.getElementById('modalPackage').value = packageName || '';
+    const tag = document.getElementById('modalPackageTag');
+    if (packageName) {
+      tag.textContent = packageName;
+      tag.classList.add('visible');
+    } else {
+      tag.textContent = '';
+      tag.classList.remove('visible');
+    }
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    formHasData = false;
+    document.getElementById('biz-name').focus();
   }
 
-  function closeBookingModal() {
+  function closeBookingModal(force) {
+    if (!force && formHasData) {
+      if (!confirm('You have unsaved info. Close anyway?')) return;
+    }
     modal.classList.remove('open');
     document.body.style.overflow = '';
     document.getElementById('bookingForm').reset();
     document.getElementById('modalForm').style.display = '';
     document.getElementById('modalThanks').classList.remove('show');
+    document.getElementById('modalError').classList.remove('show');
     document.querySelectorAll('.modal-field input').forEach(el => el.classList.remove('input-error'));
+    document.querySelectorAll('.field-error').forEach(el => el.classList.remove('show'));
     const btn = document.getElementById('modalSubmitBtn');
     btn.disabled = false;
-    btn.textContent = "Send — We'll Be in Touch";
+    btn.textContent = 'Request a Call';
+    formHasData = false;
   }
+
+  // Track if user has typed anything
+  document.getElementById('bookingForm').addEventListener('input', () => { formHasData = true; });
 
   modal.addEventListener('click', function(e) {
     if (e.target === this) closeBookingModal();
@@ -802,23 +906,47 @@
   document.getElementById('bookingForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     let valid = true;
+    document.getElementById('modalError').classList.remove('show');
 
+    // Clear previous errors
+    document.querySelectorAll('.field-error').forEach(el => el.classList.remove('show'));
     ['biz-name', 'biz-email', 'biz-phone'].forEach(id => {
       const el = document.getElementById(id);
       el.classList.remove('input-error');
-      if (!el.value.trim()) { el.classList.add('input-error'); valid = false; }
     });
 
+    // Validate required fields
+    ['biz-name', 'biz-email', 'biz-phone'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.classList.add('input-error');
+        document.getElementById(id + '-error').classList.add('show');
+        valid = false;
+      }
+    });
+
+    // Email format
     const emailEl = document.getElementById('biz-email');
     if (emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
-      emailEl.classList.add('input-error'); valid = false;
+      emailEl.classList.add('input-error');
+      document.getElementById('biz-email-error').classList.add('show');
+      valid = false;
+    }
+
+    // Phone format
+    const phoneEl = document.getElementById('biz-phone');
+    const phoneVal = phoneEl.value.trim();
+    if (phoneVal && (!/^[\+\d\s\(\)\-\.]+$/.test(phoneVal) || phoneVal.replace(/\D/g,'').length < 7)) {
+      phoneEl.classList.add('input-error');
+      document.getElementById('biz-phone-error').classList.add('show');
+      valid = false;
     }
 
     if (!valid) return;
 
     const btn = document.getElementById('modalSubmitBtn');
     btn.disabled = true;
-    btn.textContent = 'Sending…';
+    btn.textContent = 'Sending\u2026';
 
     try {
       const resp = await fetch(this.action, {
@@ -829,13 +957,16 @@
       if (resp.ok) {
         document.getElementById('modalForm').style.display = 'none';
         document.getElementById('modalThanks').classList.add('show');
+        formHasData = false;
       } else {
         btn.disabled = false;
-        btn.textContent = "Send — We'll Be in Touch";
+        btn.textContent = 'Request a Call';
+        document.getElementById('modalError').classList.add('show');
       }
     } catch (_) {
       btn.disabled = false;
-      btn.textContent = "Send — We'll Be in Touch";
+      btn.textContent = 'Request a Call';
+      document.getElementById('modalError').classList.add('show');
     }
   });
 </script>
