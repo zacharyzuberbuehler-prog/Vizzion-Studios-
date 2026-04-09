@@ -948,6 +948,19 @@
     btn.disabled = true;
     btn.textContent = 'Sending\u2026';
 
+    // Fire-and-forget to creative brief agent
+    fetch('https://cchaovtenrrjrfkvhaaq.supabase.co/functions/v1/creative-brief-agent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        business_name: document.getElementById('biz-name').value.trim(),
+        email: document.getElementById('biz-email').value.trim(),
+        phone: document.getElementById('biz-phone').value.trim(),
+        website: document.getElementById('biz-website').value.trim(),
+        vertical: document.getElementById('biz-referral').value
+      })
+    }).catch(() => {});
+
     try {
       const resp = await fetch(this.action, {
         method: 'POST',
