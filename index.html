@@ -806,8 +806,24 @@
           <p class="field-error" id="biz-phone-error">Please enter a valid phone number.</p>
         </div>
         <div class="modal-field">
-          <label for="biz-website">Website (optional)</label>
-          <input type="url" id="biz-website" name="website" placeholder="https://yourbusiness.com">
+          <label for="biz-website">Website URL</label>
+          <input type="text" id="biz-website" name="website" placeholder="yourwebsite.com" required aria-describedby="biz-website-error">
+          <p class="field-error" id="biz-website-error">Please enter your website URL.</p>
+        </div>
+        <div class="modal-field">
+          <label for="biz-vertical">Industry / Vertical</label>
+          <select id="biz-vertical" name="vertical" required aria-describedby="biz-vertical-error">
+            <option value="" disabled selected>Select your industry</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Med Spa">Med Spa</option>
+            <option value="Fitness Studio">Fitness Studio</option>
+            <option value="Auto Detailing">Auto Detailing</option>
+            <option value="Real Estate">Real Estate</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Retail">Retail</option>
+            <option value="Other">Other</option>
+          </select>
+          <p class="field-error" id="biz-vertical-error">Please select your industry.</p>
         </div>
         <div class="modal-field">
           <label for="biz-referral">How did you hear about us?</label>
@@ -910,13 +926,13 @@
 
     // Clear previous errors
     document.querySelectorAll('.field-error').forEach(el => el.classList.remove('show'));
-    ['biz-name', 'biz-email', 'biz-phone'].forEach(id => {
+    ['biz-name', 'biz-email', 'biz-phone', 'biz-website'].forEach(id => {
       const el = document.getElementById(id);
-      el.classList.remove('input-error');
+      if (el) el.classList.remove('input-error');
     });
 
-    // Validate required fields
-    ['biz-name', 'biz-email', 'biz-phone'].forEach(id => {
+    // Validate required text/email/tel/url fields
+    ['biz-name', 'biz-email', 'biz-phone', 'biz-website'].forEach(id => {
       const el = document.getElementById(id);
       if (!el.value.trim()) {
         el.classList.add('input-error');
@@ -924,6 +940,13 @@
         valid = false;
       }
     });
+
+    // Validate vertical select
+    const verticalEl = document.getElementById('biz-vertical');
+    if (!verticalEl.value) {
+      document.getElementById('biz-vertical-error').classList.add('show');
+      valid = false;
+    }
 
     // Email format
     const emailEl = document.getElementById('biz-email');
