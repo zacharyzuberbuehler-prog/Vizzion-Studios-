@@ -978,6 +978,11 @@
         headers: { 'Accept': 'application/json' }
       });
       if (resp.ok) {
+        // Fire-and-forget: capture lead in Vizzion Hub CRM
+        fetch('https://cchaovtenrrjrfkvhaaq.supabase.co/functions/v1/lead-intake', {
+          method: 'POST',
+          body: new FormData(this)
+        }).catch(() => {});
         document.getElementById('modalForm').style.display = 'none';
         document.getElementById('modalThanks').classList.add('show');
         formHasData = false;
